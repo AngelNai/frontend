@@ -1,4 +1,4 @@
-import ListItem from "./listitem.jsx"
+import ListItem from "./assets/Listitem"
 const personas =[
   {
   Nombre: 'Angel Armando',
@@ -8,8 +8,8 @@ const personas =[
     Nombre: 'Adela Naileth',
     correo:'Nai1111@hotmail.com'
   },
-  {Nombre:'Fernando',
-  correo:'Fernando Armas'
+  {Nombre:'Fernando Armas',
+  correo:'farms@gmail.com'
   }
 ]
 function App() {
