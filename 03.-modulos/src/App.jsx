@@ -20,14 +20,13 @@ function App() {
     <hr/>
     <ul>
 {
-  links.map((link)=>{
+  links.map((link)=>(
     <ListItem 
     key={link.name}
     name={link.name}
     url={link.url}
     />
-
-  }
+)
 
   )
 }
