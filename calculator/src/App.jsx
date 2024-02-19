@@ -1,93 +1,132 @@
 import "./app.css"
+const numerberButtonClasses='btn btn-info w-100'
+const operatorButtonClasses='btn btn-warning w-100'
+const specialButtonClasses='btn btn-danger w-100'
 
 function App() {
   return (
     <div>
       <h1>calculator</h1>
-      <table className="Center">
+      <table className="center">
         <tbody>
           <tr>
-            <td>
-              11
+            <td className="text-end" colSpan={4}>
+              <h2>0</h2>
             </td>
-            <td>
-              12
+            </tr>
+          <tr>
+            <td className="text-center">
+              <button className={specialButtonClasses}
+              type='button'>C</button>
             </td>
-            <td>
-              13
+            <td className="text-center">
+              <button className={specialButtonClasses}
+              type="button">{'<'}</button>
             </td>
-            <td>
-              14
+            <td className="text-center">
+              <button className={operatorButtonClasses}
+              type="button">%</button>
+            </td>
+            <td className="text-center">
+              <button className={operatorButtonClasses}
+              type="button">/</button>
             </td>
           </tr>
           <tr>
-            <td>
-              21
+          <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+7
+              </button>
             </td>
-            <td>
-              22
+            <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+8
+              </button>
             </td>
-            <td>
-              23
+            <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+9
+              </button>
             </td>
-            <td>
-              24
-            </td>
-          </tr>
-          <tr>
-            <td>
-              31
-            </td>
-            <td>
-              32
-            </td>
-            <td>
-              33
-            </td>
-            <td>
-              34
+            <td className="text-center">
+              <button className={operatorButtonClasses}
+              type="button">
+X
+              </button>
             </td>
           </tr>
           <tr>
-            <td>
-              41
+          <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+6
+              </button>
             </td>
-            <td>
-              42
+            <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+5
+              </button>
             </td>
-            <td>
-              43
+            <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+4
+              </button>
             </td>
-            <td>
-              44
-            </td>
-          </tr>
-          <tr>
-            <td>
-              51
-            </td>
-            <td>
-              52
-            </td>
-            <td>
-              53
-            </td>
-            <td>
-              54
+            <td className="text-center">
+              <button className={operatorButtonClasses}
+              type="button">
+-
+              </button>
             </td>
           </tr>
           <tr>
-            <td>
-              61
+          <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+3
+              </button>
             </td>
-            <td>
-              62
+            <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+2
+              </button>
             </td>
-            <td>
-              63
+            <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+1
+              </button>
             </td>
-            <td>
-              64
+            <td className="text-center">
+              <button className={operatorButtonClasses}
+              type="button">
++
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td className="text-center" colSpan={2}>
+            <button className={numerberButtonClasses}
+            type="secondary">0</button>
+            </td>
+            
+            <td className="text-center">
+              <button className={numerberButtonClasses}
+              type="secondary">
+.
+              </button>
+            </td>
+            <td className="text-center">
+              <button className={specialButtonClasses}
+              type="button">
+=
+              </button>
             </td>
           </tr>
         </tbody>
