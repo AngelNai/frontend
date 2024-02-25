@@ -9,7 +9,11 @@ const specialButtonClasses='btn btn-danger w-100'
 function App() {
   const [display, setDisplay]=useState({
     value:'0',
-    hasPoint:false
+    hasPoint:false,
+    previousvalue:'0',
+    operatorhasbeenpressed:false,
+    operator:''
+
   })
 
 
@@ -49,7 +53,45 @@ setDisplay({
 
 })
 }
+const deletlastcharacter=()=>{
+  setDisplay({
+    ...display,
+    value:
+    display.value.slice(0,-1)
 
+
+  })
+  if(display.value.length===1){
+    setDisplay({
+      ...display,
+      value:'0'
+    })
+  }
+   
+}
+const setOperator =(operator)=>{
+  setDisplay({
+    ...display,
+    previousvalue:display.value,
+    operatorhasbeenpressed:true,
+    hasPoint:false,
+    value:'0'
+  })
+} 
+const calculate=()=>
+{
+  if(!display.operatorhasbeenpressed){
+    return
+  }
+
+  setDisplay({
+    ...display,
+    value:eval(`${display.previousvalue} ${display.operator} ${display.value}`),
+    operatorhasbeenpressed:false,
+    hasPoint:false,
+    previousvalue:'0'
+  })
+}
   return (
     <div>
     <h1 className="text-center">calculator</h1>
@@ -69,7 +111,8 @@ setDisplay({
           </td>
           <td className="text-center">
             <button className={specialButtonClasses}
-            type="button">{'<'}</button>
+            type="button"
+            onClick={deletlastcharacter}>{'<'}</button>
           </td>
           <td className="text-center">
             <button className={operatorButtonClasses}
@@ -134,7 +177,8 @@ X
           </td>
           <td className="text-center">
             <button className={operatorButtonClasses}
-            type="button">
+            type="button"
+           >
 -
             </button>
           </td>
@@ -163,7 +207,8 @@ X
           </td>
           <td className="text-center">
             <button className={operatorButtonClasses}
-            type="button">
+            type="button"
+            onClick={()=>setOperator('+')}>
 +
             </button>
           </td>
@@ -184,7 +229,8 @@ X
           </td>
           <td className="text-center">
             <button className={specialButtonClasses}
-            type="button">
+            type="button"
+            onClick={calculate}>
 =
             </button>
           </td>
