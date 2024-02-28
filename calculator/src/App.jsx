@@ -16,7 +16,48 @@ function App() {
 
   })
 
+//-----------------------------------------------
+const setOperator =(operator)=>{
+  setDisplay({
+    ...display,
+    previousvalue:display.value,
+    operatorhasbeenpressed:true,
+    hasPoint:false,
+    value:'0',
+    operator
+  })
+} 
+//-----------------------------------------------
 
+const calculate=()=>
+{
+  if(!display.operatorhasbeenpressed){
+   return
+  }
+ // let result=0
+//if(display.operator==='%'){
+//result=eval(`${display.previousvalue}/100 * ${display.value}`)
+
+//}else{
+  //result=eval(`${display.previousvalue}${display.operator}${display.value}`)
+let result=(display.operator==='%')?
+eval(`${display.previousvalue}/100*${display.value}`):
+eval(`${display.previousvalue} ${display.operator}${display.value}`)
+
+
+
+  setDisplay({
+    ...display,
+    value:result,
+    operatorhasbeenpressed:false,
+    hasPoint:false,
+    previousvalue:'0'
+  })
+}
+
+
+
+//-----------------------------------------------
 
   const updateDisplay=(value)=>{
     if(value==='.'){
@@ -25,7 +66,7 @@ return
       }
       setDisplay({
         ...display,
-        value:display.value+value,
+        value:display.value + value,
         hasPoint:true
       })
       return
@@ -41,23 +82,25 @@ return
   } else{
     setDisplay({
       ...display,
-      value:display.value+value,
+      value:display.value + value,
     })
   }
 }
-const clearDisplay=()=>{
+//-----------------------------
+const clearDisplay=(value)=>{
 setDisplay({
   ...display,
-  value:'0',
+  value:value,
   hasPoint:false
 
 })
 }
+//-------------------
 const deletlastcharacter=()=>{
   setDisplay({
     ...display,
-    value:
-    display.value.slice(0,-1)
+    value:display.value.slice(0,-1),
+    hasPoint:(display.value.slice(-1)==='.') ? false:display.hasPoint
 
 
   })
@@ -69,29 +112,8 @@ const deletlastcharacter=()=>{
   }
    
 }
-const setOperator =(operator)=>{
-  setDisplay({
-    ...display,
-    previousvalue:display.value,
-    operatorhasbeenpressed:true,
-    hasPoint:false,
-    value:'0'
-  })
-} 
-const calculate=()=>
-{
-  if(!display.operatorhasbeenpressed){
-    return
-  }
 
-  setDisplay({
-    ...display,
-    value:eval(`${display.previousvalue} ${display.operator} ${display.value}`),
-    operatorhasbeenpressed:false,
-    hasPoint:false,
-    previousvalue:'0'
-  })
-}
+
   return (
     <div>
     <h1 className="text-center">calculator</h1>
@@ -106,7 +128,7 @@ const calculate=()=>
           <td className="text-center">
             <button className={specialButtonClasses}
             type='button'
-            onClick={clearDisplay}
+            onClick={()=>clearDisplay('0')}
             >C</button>
           </td>
           <td className="text-center">
@@ -116,11 +138,15 @@ const calculate=()=>
           </td>
           <td className="text-center">
             <button className={operatorButtonClasses}
-            type="button">%</button>
+            type="button"
+            onClick={() => setOperator('%')}>%</button>
           </td>
           <td className="text-center">
             <button className={operatorButtonClasses}
-            type="button">/</button>
+            type="button"
+            onClick={()=>setOperator('/')}>
+              /
+              </button>
           </td>
         </tr>
         <tr>
@@ -148,7 +174,8 @@ const calculate=()=>
           </td>
           <td className="text-center">
             <button className={operatorButtonClasses}
-            type="button">
+            type="button"
+           onClick={()=>setOperator('*')} >
 X
             </button>
           </td>
@@ -178,7 +205,7 @@ X
           <td className="text-center">
             <button className={operatorButtonClasses}
             type="button"
-           >
+            onClick={()=>setOperator('-')}>
 -
             </button>
           </td>
