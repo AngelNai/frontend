@@ -41,8 +41,12 @@ const calculate=()=>
 //}else{
   //result=eval(`${display.previousvalue}${display.operator}${display.value}`)
 let result=(display.operator==='%')?
-eval(`${display.previousvalue}/100*${display.value}`):
+eval(`${display.previousvalue}/ 100 *${display.value}`):
 eval(`${display.previousvalue} ${display.operator}${display.value}`)
+
+
+
+result=result+""
 
 
 
@@ -50,7 +54,7 @@ eval(`${display.previousvalue} ${display.operator}${display.value}`)
     ...display,
     value:result,
     operatorhasbeenpressed:false,
-    hasPoint:false,
+    hasPoint:result.includes("."),
     previousvalue:'0'
   })
 }
@@ -112,7 +116,10 @@ const deletlastcharacter=()=>{
   }
    
 }
+const Limit=(string ='',length=10)=>{
+  return string.slice(0,length)
 
+}
 
   return (
     <div>
