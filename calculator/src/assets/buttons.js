@@ -8,7 +8,7 @@ export const buttons=[[
     {
       class: 'special',
       label:'<',
-      function: 'deletLastCharacter',
+      function: 'deletlastcharacter',
       columns: 1
     },
     {

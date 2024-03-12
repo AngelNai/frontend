@@ -4,18 +4,27 @@ export const Button = ({
   class:buttonClass, 
   label,
    function:buttonFunction, 
-   columns
+   columns,
+   buttonsFunctions
 }) => {
   return (
-    <td>
+    <td colSpan={columns}>
     <button 
     type='button'
     className={buttonsClasses[buttonClass]}
-            onClick={()=>console.log('clicked')}
+            onClick={()=>buttonsFunctions[buttonFunction](label)}
             >
                 
                 {label}
                 </button>
                 </td>
   )
+}
+Button.propTypes={
+  class:'string',
+class:'string',
+label:'string',
+function:'string',
+columns:'number',
+  buttonsFunctions:'object'
 }

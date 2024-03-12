@@ -40,15 +40,18 @@ const calculate=()=>
   if(!display.operatorhasbeenpressed){
    return
   }
- // let result=0
-//if(display.operator==='%'){
-//result=eval(`${display.previousvalue}/100 * ${display.value}`)
+ 
+let operator=display.operator==='%'?'/100*':
+display.operator==='X'?'*':display.operator
 
-//}else{
-  //result=eval(`${display.previousvalue}${display.operator}${display.value}`)
-let result=(display.operator==='%')?
-eval(`${display.previousvalue}/ 100 *${display.value}`):
-eval(`${display.previousvalue} ${display.operator}${display.value}`)
+
+
+
+
+
+
+let result=eval(`${display.previousvalue}${operator}${display.value}`)
+
 
 
 
@@ -143,7 +146,11 @@ const buttonsFunctions={
        {
         buttons.map((row,index)=>{
           return(
-            <ButtonRow key={index} row={row}/>
+            <ButtonRow
+             key={index}
+              row={row}
+              buttonsFunctions={buttonsFunctions}
+            />
           )
         })
        }
