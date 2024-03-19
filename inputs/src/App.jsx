@@ -3,15 +3,30 @@ import { useState } from "react"
 
 
 function App() {
-const[username,setUsername]=useState("") 
- const handleUsernameChange=(event)=>{
-setUsername(event.target.value)
+  const [inputsForm, setInputsForm]=useState({
+    username:"",
+    password:"",
+  })
+
+
+ const handleInputsChange=(event)=>{
+setInputsForm({
+  ...inputsForm,
+[event.target.name]:event.target.value
+})
+}
+const handlePasswordChange=(event)=>{
+  setPassword(event.target.value)
 }
 
 const handleSubmit=(e)=>{
   e.preventDefault()
-  console.log("mi nombre de usuario es",username)
-  setUsername("")
+  console.log("mi nombre de usuario es:",inputsForm.username)
+  console.log("mi contraseña es:",inputsForm.password)
+  setInputsForm({
+    username:"",
+    password:"",
+  })
 }
 
   return (
@@ -25,9 +40,10 @@ inputs
         <label htmlFor="username">username</label>
       <input 
       id="username"
-      tupe="text"
-      value={username}
-      onChange={(event)=>handleUsernameChange(event)}
+      name="username"
+      type="text"
+      value={inputsForm.username}
+      onChange={(event)=>handleInputsChange(event)}
 
       
       
@@ -38,7 +54,10 @@ inputs
   <label htmlFor="password">password</label>
   <input 
   id="password"
+  name="password"
   type="password"
+  value={inputsForm.password}
+  onChange={(event)=>handleInputsChange(event)}
   />
 </div>
 <div>
