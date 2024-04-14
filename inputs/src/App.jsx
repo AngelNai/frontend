@@ -1,71 +1,50 @@
-import { useState } from "react"
-
-
+import { useForm } from "./Hooks/useForm"
 
 function App() {
-  const [inputsForm, setInputsForm]=useState({
+  const[InputsForm,HandleInputChange,FormReset] = useForm({
     username:"",
     password:"",
   })
 
-
- const handleInputsChange=(event)=>{
-setInputsForm({
-  ...inputsForm,
-[event.target.name]:event.target.value
-})
-}
-const handlePasswordChange=(event)=>{
-  setPassword(event.target.value)
-}
-
-const handleSubmit=(e)=>{
-  e.preventDefault()
-  console.log("mi nombre de usuario es:",inputsForm.username)
-  console.log("mi contraseña es:",inputsForm.password)
-  setInputsForm({
-    username:"",
-    password:"",
-  })
-}
+  const HandleSubmit = (e) => {
+    e.preventDefault()
+    console.log("Hola, mi nombre de usuario es: ",InputsForm.username)
+    console.log("y mi contraseña es: ",InputsForm.password)
+    FormReset()
+  }
+  
 
   return (
     <div>
-      <h1>
-inputs
-      </h1>
-      <hr/> 
-      <form onSubmit={(e)=>handleSubmit(e)}>
-        <divs>
-        <label htmlFor="username">username</label>
-      <input 
-      id="username"
-      name="username"
-      type="text"
-      value={inputsForm.username}
-      onChange={(event)=>handleInputsChange(event)}
-
-      
-      
-      
-      />
-</divs>
-<div>
-  <label htmlFor="password">password</label>
-  <input 
-  id="password"
-  name="password"
-  type="password"
-  value={inputsForm.password}
-  onChange={(event)=>handleInputsChange(event)}
-  />
-</div>
-<div>
-  <button type="submit">submit</button>
-</div>
-    </form>
+      <h1>Input</h1>
+      <hr />
+      <form onSubmit={(e)=>HandleSubmit(e)}>
+        <div>
+        <label htmlFor="username">Username</label>
+        <input 
+        id="username"
+        name="username"
+        type="text"
+        value={InputsForm.username}
+        onChange={(event)=>HandleInputChange(event)}
+        />
+        </div>
+        <div>
+        <label htmlFor="password">Password</label>
+        <input
+        id="password"
+        name="password"
+        type="password" 
+        value={InputsForm.password}
+        onChange={(event)=>HandleInputChange(event)}
+        />
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
     </div>
-  ) 
+  )
 }
 
 export default App
