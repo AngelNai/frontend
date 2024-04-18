@@ -1,22 +1,29 @@
 import React from "react"
+import ShowItemModal from "./ShowItemModal"
 const Listitem  =({task, limit})=>{
     return(
     <>
     <div className="row m-2">
     <div className="col-6">
-      {task}
+      <ShowItemModal task={task}/>
+    <button className="btn btn-link" 
+    data-bs-toggle="modal"
+    data-bs-target={"#ShowItemModal"+task.id}>
+    {task.task}</button>
       </div>
 <div className='col-2'>
-{limit}
+{task.limit}
 </div>
 <div className='col'>
-<button className='btn btn-sm btn-primary'>
-  edit
-</button>
-<button className='btn btn-sm btn-danger'>
-  delete
-  </button>
+{task.location}
   </div>
+
+<div className="col-1">
+
+
+  <input type="checkbox"/>
+</div>
+
   </div>
   </>
     )
