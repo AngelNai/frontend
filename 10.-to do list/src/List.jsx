@@ -19,7 +19,7 @@ return (
       </div>
       <div className="col-1">
 
-        <h4>done</h4>
+
       </div>
     </div>
     {

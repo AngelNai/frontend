@@ -6,6 +6,9 @@ const Listitem  =({task, limit})=>{
     <div className="row m-2">
     <div className="col-6">
       <ShowItemModal task={task}/>
+
+
+      <input type="checkbox"/>
     <button className="btn btn-link" 
     data-bs-toggle="modal"
     data-bs-target={"#ShowItemModal"+task.id}>
@@ -21,7 +24,6 @@ const Listitem  =({task, limit})=>{
 <div className="col-1">
 
 
-  <input type="checkbox"/>
 </div>
 
   </div>

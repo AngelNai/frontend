@@ -1,3 +1,4 @@
+import AddTaskModal from "./AddTaskModal"
 import List from "./List"
 const tasklist=[
   {
@@ -27,17 +28,27 @@ function App() {
 
   return (
     
-    <div>
+
+    <div className="container">
     <h1>To Do List</h1>
     <hr/>
     <List
-    
-    
-    tasklist={tasklist}
-    
-    
-    />
-    
+    tasklist={tasklist}/>
+    <hr/>
+    <div className="text-end">
+
+      <button
+       type="button"
+        className="btn btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#AddTaskModal"
+        >
+          <i className="bi bi-plus-lg"></i>
+       Add
+      </button>
+    </div>
+
+
   </div>
 
   )

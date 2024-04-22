@@ -1,11 +1,11 @@
-const ShowItemModal =({task})=>{
+const AddTaskModal =()=>{
     return(
-        <div className="modal fade" id={"ShowItemModal"+task.id}>
+        <div className="modal fade" id={"AddTaskModal"+task.id}>
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div  className="modal-header">
                         <h1 className="modal-title"
-                            id="showitemmodallabel">
+                            id="AddTaskModallabel">
 {task.task}                        </h1>
                         <button 
                             type="button" className="btn-close" 
@@ -58,4 +58,4 @@ const ShowItemModal =({task})=>{
         </div>
     )
 }
-export default ShowItemModal
+export default AddTaskModal
