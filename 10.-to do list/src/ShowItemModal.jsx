@@ -14,48 +14,39 @@ const ShowItemModal =({task})=>{
 
                     </div>
             
-< div className="modal-body container">
-    <div className="row">
-        <p className="col">
-        {task.description}
-        </p>
-        </div>
-
-
-           <div className="row">
-            <div className="col text-center">
-                <b>location</b>
-                    <br/>
-                {task.location}
-    </div>
-    
-    <div className="col text-center">
-        <b>Limit </b>
-        <br/>
-        {task.limit}
-        
-    </div>
-        </div>
-             </div>    
-                    <div
-                    className="modal-footer">
-                       <button className='btn btn-sm btn-outline-danger'>delete
-<i className="bi bi-trash3-fill"></i>
-  </button> 
-  <button 
-                        type="button"
-                        className="btn btn-sm btn-outline btn-secondary"
-                        data-bs-dismiss="modal">
-                            close
-                        </button>
-
-                        <button className='btn btn-sm btn-outline-primary'>
-<i className="bi bi-pencil-square">Edit</i></button>
-
+                    <div className="modal-body"> 
+                    <div className="modal-body container">
+                        <div className="row">
+                            <p>{task.description}</p>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <i className="bi bi-geo-alt-fill"></i>
+                                {task.location}
+                            </div>
+                            <div className="col">
+                            <i className="bi bi-clock-fill"></i>
+                                {task.limit}
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div className="modal-footer">
+                <button className="btn btn-sm btn-outline-danger">
+                        <i className="bi bi-trash"></i>Delete
+                    </button>
+                    <button className="btn btn-sm btn-outline-primary">
+                        <i className="bi bi-pencil-square"></i>Edit
+                    </button>
+                    <button
+                    type="button"
+                    className="btn btn-outline-secondary"
+                    data-bs-dismiss="modal"
+                    >Close</button>
                 </div>
             </div>
         </div>
+    </div>
     )
 }
 export default ShowItemModal
