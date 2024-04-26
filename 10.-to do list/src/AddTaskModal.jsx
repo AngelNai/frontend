@@ -1,4 +1,49 @@
-const AddTaskModal =()=>{
+import withReactContent from "sweetalert2-react-content"
+import { useForm } from "./Hooks/UseForm"
+import Swal from "sweetalert2"
+
+const taskInfo={
+    task:'',
+    description:'',
+    location:'',
+    limit:'',
+
+}
+
+ 
+
+const AddTaskModal =({tasklist,settasklist})=>{
+    
+    const [values, HandleInputChange,reset]=useForm(taskInfo)
+    const MySwal=withReactContent(Swal)
+    
+    const  handleSaveClick=()=>{
+
+
+        const newtasklist=[...tasklist,{
+            id: tasklist.length+1,
+            ...values,
+            donde:false
+        }]
+    settasklist(newtasklist)
+    localStorage.setItem('tasklist',JSON.stringify(newtasklist))
+
+    
+    reset()
+MySwal.fire({
+    title: "Actividad agregada.",
+    width: 600,
+    padding: "3em",
+    color: "#716add",
+    background: "#fff url(/images/trees.png)",
+    backdrop: `
+      rgba(0,0,123,0.4)
+      url("/images/nyan-cat.gif")
+      left top
+      no-repeat
+    `
+  });
+}
     return(
         <div className="modal fade" id={"AddTaskModal"}>
             <div className="modal-dialog modal-dialog-centered">
@@ -24,6 +69,9 @@ const AddTaskModal =()=>{
             <input 
             type="text"
             className="form-control"
+            name="task"
+            value={values.task}
+            onChange={HandleInputChange}
             id="task"/> 
 
 <label
@@ -31,6 +79,9 @@ const AddTaskModal =()=>{
             htmlFor="descroption">Description</label>
             <input 
             type="text"
+            name="description"
+            value={values.description}
+            onChange={HandleInputChange}
             className="form-control"
             id="description"/> 
 
@@ -40,6 +91,9 @@ const AddTaskModal =()=>{
             htmlFor="location">Location</label>
             <input 
             type="text"
+            name="location"
+            value={values.location}
+            onChange={HandleInputChange}
             className="form-control"
             id="Location"/> 
 
@@ -48,6 +102,9 @@ const AddTaskModal =()=>{
             htmlFor="descroption">Limit Time</label>
             <input 
             type="time"
+            name="limit"
+            value={values.limit}
+            onChange={HandleInputChange}
             className="form-control"
             id="limit"/> 
 
@@ -61,7 +118,9 @@ const AddTaskModal =()=>{
 
 
                     <div className="modal-footer">
-                       <button className='btn btn-sm btn-outline-primary'>
+                       <button className='btn btn-sm btn-outline-primary'
+                       onClick={handleSaveClick}
+                        data-bs-dismiss="modal">
 <i className="bi bi-pencil-square"></i>Save
   </button> 
 
