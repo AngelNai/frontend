@@ -1,4 +1,32 @@
-const ShowItemModal =({task})=>{
+import Swal from "sweetalert2"
+const ShowItemModal =({task, tasklist, settasklist})=>{
+    
+    const handleDeleteClick = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const newtasklist = tasklist.filter((taskItem) => taskItem.id !== task.id)
+                localStorage.setItem('tasklist', JSON.stringify(newtasklist))
+                settasklist(newtasklist)
+
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: "Your task has been deleted",
+                    icon: 'success',
+                })
+            }
+        })
+    }
+    
+    
+    
     return(
         <div className="modal fade" id={"ShowItemModal"+task.id}>
             <div className="modal-dialog modal-dialog-centered">
@@ -6,7 +34,8 @@ const ShowItemModal =({task})=>{
                     <div  className="modal-header">
                         <h1 className="modal-title"
                             id="showitemmodallabel">
-{task.task}                        </h1>
+
+({task.id}){task.task}                        </h1>
                         <button 
                             type="button" className="btn-close" 
                             data-bs-dismiss="modal">
@@ -32,7 +61,9 @@ const ShowItemModal =({task})=>{
                     </div>
                 </div>
                 <div className="modal-footer">
-                <button className="btn btn-sm btn-outline-danger">
+                <button className="btn btn-sm btn-outline-danger"
+                 onClick={handleDeleteClick}
+                 data-bs-dismiss='modal' >
                         <i className="bi bi-trash"></i>Delete
                     </button>
                     <button className="btn btn-sm btn-outline-primary">

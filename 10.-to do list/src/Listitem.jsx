@@ -1,11 +1,13 @@
-import React from "react"
+
 import ShowItemModal from "./ShowItemModal"
-const Listitem  =({task, limit})=>{
+const Listitem  =({task,settasklist,tasklist})=>{
     return(
     <>
     <div className="row m-2">
     <div className="col-6">
-      <ShowItemModal task={task}/>
+      <ShowItemModal task={task}
+      tasklist={tasklist}
+      settasklist={settasklist}/>
       <input type="checkbox"/>
     <button className="btn btn-link" 
     data-bs-toggle="modal"

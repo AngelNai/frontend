@@ -1,6 +1,9 @@
 import withReactContent from "sweetalert2-react-content"
 import { useForm } from "./Hooks/UseForm"
 import Swal from "sweetalert2"
+import {v4 as uuidv4} from 'uuid'
+import React from "react"
+
 
 const taskInfo={
     task:'',
@@ -18,10 +21,8 @@ const AddTaskModal =({tasklist,settasklist})=>{
     const MySwal=withReactContent(Swal)
     
     const  handleSaveClick=()=>{
-
-
         const newtasklist=[...tasklist,{
-            id: tasklist.length+1,
+            id: uuidv4(),
             ...values,
             donde:false
         }]
