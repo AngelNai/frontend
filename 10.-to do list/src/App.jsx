@@ -21,10 +21,14 @@ if(tasklist.length===0){
     <h2>To Do List</h2>
     <hr/>
     <List
-    tasklist={tasklist}/>
+    tasklist={tasklist} settasklist={settasklist}/>
     <hr/>
     <div className="text-end">
-  <AddTaskModal tasklist={tasklist} settasklist={settasklist}/>
+  <AddTaskModal
+   tasklist={tasklist} 
+   settasklist={settasklist}
+   
+   />
       <button
        type="button"
         className="btn btn-outline-primary"

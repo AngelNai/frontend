@@ -1,4 +1,6 @@
 import Swal from "sweetalert2"
+import PropTypes from "prop-types"
+import AddTaskModal from "./AddTaskModal"
 const ShowItemModal =({task, tasklist, settasklist})=>{
     
     const handleDeleteClick = () => {
@@ -35,7 +37,7 @@ const ShowItemModal =({task, tasklist, settasklist})=>{
                         <h1 className="modal-title"
                             id="showitemmodallabel">
 
-({task.id}){task.task}                        </h1>
+{task.task}                        </h1>
                         <button 
                             type="button" className="btn-close" 
                             data-bs-dismiss="modal">
@@ -66,7 +68,12 @@ const ShowItemModal =({task, tasklist, settasklist})=>{
                  data-bs-dismiss='modal' >
                         <i className="bi bi-trash"></i>Delete
                     </button>
-                    <button className="btn btn-sm btn-outline-primary">
+                    
+                    <button className="btn btn-sm btn-outline-primary"
+                    data-bs-target={"#AddTaskModal"+task.id}
+                    data-bs-toggle={"modal"}
+                    onClick={()=>console.log({task})}
+                    >
                         <i className="bi bi-pencil-square"></i>Edit
                     </button>
                     <button
@@ -79,5 +86,10 @@ const ShowItemModal =({task, tasklist, settasklist})=>{
         </div>
     </div>
     )
+}
+ShowItemModal.propTypes={
+    task: PropTypes.object.isRequired,
+    tasklis: PropTypes.array.isRequired,
+    settasklist: PropTypes.func.isRequired
 }
 export default ShowItemModal

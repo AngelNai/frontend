@@ -3,6 +3,7 @@ import { useForm } from "./Hooks/UseForm"
 import Swal from "sweetalert2"
 import {v4 as uuidv4} from 'uuid'
 import React from "react"
+import PropTypes from "prop-types"
 
 
 const taskInfo={
@@ -15,19 +16,40 @@ const taskInfo={
 
  
 
-const AddTaskModal =({tasklist,settasklist})=>{
+const AddTaskModal =({task=null, tasklist,settasklist})=>{
     
-    const [values, HandleInputChange,reset]=useForm(taskInfo)
+    const [values, HandleInputChange,reset]=useForm(
+        task||taskInfo
+    )
+
+
     const MySwal=withReactContent(Swal)
     
     const  handleSaveClick=()=>{
-        const newtasklist=[...tasklist,{
+        let newtasklist=[]
+        if(task){
+            newtasklist=tasklist.map((taskItem)=>{
+                if (taskItem.id===task.id){
+                    task.task=values.task
+                    task.description=values.description
+                    task.location=values.location
+                    task.limit=values.limit    
+                }
+                return taskItem
+            })
+        }else{
+            newtasklist=[...tasklist,{
             id: uuidv4(),
             ...values,
-            donde:false
+            done:false
         }]
-    settasklist(newtasklist)
+    
+
+        }
+       
+settasklist(newtasklist)
     localStorage.setItem('tasklist',JSON.stringify(newtasklist))
+
 
     
     reset()
@@ -45,13 +67,14 @@ MySwal.fire({
     `
   });
 }
+const id=task?.id||''
     return(
-        <div className="modal fade" id={"AddTaskModal"}>
+        <div className="modal fade" id={"AddTaskModal"+id}>
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div  className="modal-header">
                         <h1 className="modal-title"
-                            id="AddTaskModalLabel">    Add New Task
+                            id="AddTaskModalLabel">    {task ?"edit task":"add task"}Add New Task
                               </h1>
                         <button 
                             type="button" className="btn-close" 
@@ -77,7 +100,7 @@ MySwal.fire({
 
 <label
             className="form-label"
-            htmlFor="descroption">Description</label>
+            htmlFor="description">Description</label>
             <input 
             type="text"
             name="description"
@@ -96,11 +119,11 @@ MySwal.fire({
             value={values.location}
             onChange={HandleInputChange}
             className="form-control"
-            id="Location"/> 
+            id="location"/> 
 
 <label
             className="form-label"
-            htmlFor="descroption">Limit Time</label>
+            htmlFor="limit">Limit Time</label>
             <input 
             type="time"
             name="limit"
@@ -139,5 +162,12 @@ MySwal.fire({
             </div>
         </div>
     )
+}
+
+
+AddTaskModal.propTypes={
+    task: PropTypes.object,
+    tasklis: PropTypes.array.isRequired,
+    settasklist: PropTypes.func.isRequired
 }
 export default AddTaskModal

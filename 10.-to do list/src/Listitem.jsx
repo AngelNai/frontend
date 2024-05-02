@@ -1,6 +1,11 @@
 
+import AddTaskModal from "./AddTaskModal"
 import ShowItemModal from "./ShowItemModal"
+import PropTypes from "prop-types"
+
 const Listitem  =({task,settasklist,tasklist})=>{
+  
+
     return(
     <>
     <div className="row m-2">
@@ -8,6 +13,11 @@ const Listitem  =({task,settasklist,tasklist})=>{
       <ShowItemModal task={task}
       tasklist={tasklist}
       settasklist={settasklist}/>
+      <AddTaskModal
+      task={task}
+      tasklist={tasklist}
+      settasklist={settasklist}
+      />
       <input type="checkbox"/>
     <button className="btn btn-link" 
     data-bs-toggle="modal"
@@ -29,4 +39,15 @@ const Listitem  =({task,settasklist,tasklist})=>{
   </>
     )
 }
-export default Listitem
+
+
+Listitem.propTypes={
+  task: PropTypes.object.isRequired,
+  tasklis: PropTypes.array.isRequired,
+  settasklist: PropTypes.func.isRequired
+}
+  export default Listitem
+
+
+
+
