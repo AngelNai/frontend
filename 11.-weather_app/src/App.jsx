@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react"
-import { getWeather } from "./api/WeatherApi"
-import  CityCard from "./components/CityCard"
+//import { useEffect, useState } from "react"
+//import { getWeather } from "./api/WeatherApi"
+import  CityCard from "./components"
 
-const App =()=>{
-  const [weather, setWeather] = useState(null)
+const App =()=>{ 
+
+  /*const [weather, setWeather] = useState(null)
   useEffect(()=>{
     const getCityWeather = async()=>{
       setWeather(await getWeather())
-    }
+    }s
+
+
     getCityWeather() 
     
   },[])
-  
+  */
 
   return (
     <>
@@ -20,8 +23,8 @@ const App =()=>{
 
 
       {
-        !weather ? <h2>Loading</h2>:
-        <CityCard weather={weather}/>
+        //!weather ? <h2>Loading</h2>:
+        <CityCard />
       }
       
     </>
