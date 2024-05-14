@@ -1,6 +1,7 @@
 //import { useEffect, useState } from "react"
 //import { getWeather } from "./api/WeatherApi"
 import  CityCard from "./components"
+import './assets/css/index.css'
 
 const App =()=>{ 
 
@@ -17,7 +18,7 @@ const App =()=>{
   */
 
   return (
-    <>
+    <div className="container">
       <h1>Weather App</h1>
       <hr/>
 
@@ -27,7 +28,7 @@ const App =()=>{
         <CityCard />
       }
       
-    </>
+    </div>
   )
 }
 
