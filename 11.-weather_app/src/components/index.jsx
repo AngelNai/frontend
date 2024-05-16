@@ -3,19 +3,19 @@ import { getWeather } from "../api/WeatherApi"
 import CityCardContent from "./CityCardContent"
 import CityCardPlaceholder from "./CityCardPlaceholder"
 
-const CityCard =()=>{
+const CityCard =({city})=>{
 
 
   const [weather, setWeather] = useState(null)
   useEffect(()=>{
     const getCityWeather = async()=>{
-      setWeather(await getWeather())
+      setWeather(await getWeather(city))
     }
 
 
     getCityWeather() 
     
-  },[])
+  },[city])
 
 
 
