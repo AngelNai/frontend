@@ -20,7 +20,7 @@ const CityCard =({city})=>{
 
 
   return(
-    <div className="card" style={{width:'18rem'}}>
+    <div className="col-1 card m-2" style={{width:'18rem'}}>
 {
   weather ?
   <CityCardContent weather={weather}/>:

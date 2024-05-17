@@ -16,14 +16,14 @@ const App =()=>{
         <SearchCity cities={cities} setCities={setCities}/>
       <hr/>
 
-
+      <div  className="row">
       {
 
         cities.map((city, index)=>(
         <CityCard key={index} city={city}/>   
         ))
       }
-        
+        </div>
     </div>
   )
 }
