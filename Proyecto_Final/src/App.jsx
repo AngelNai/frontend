@@ -22,7 +22,7 @@ function App() {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Debes escribir algo, artista, nombre de canción, etc.",
+        text: "Debes escribir un dato de busqueda valido, artista, nombre de canción, etc.",
       });
       return;
     }
@@ -56,7 +56,7 @@ function App() {
   };
 
   const fetchArtists = async () => {
-    const artistIds = '7rkW85dBwwrJtlHRDkJDAC,3TVXtAsR1Inumwj472S9r4,7dGJo4pcD2V6oG8kP0tJRR,5H4yInM5zmHqpKIoMNAx4r,1Xyo4u8uXC1ZmMpatF05PJ,0eDvMgVFoNV3TpwtrVCoTj,6eUKZXaKkcviH0Ku9w2n3V,1uNFoZAHBGtllmzznpCI3s,5K4W6rqBFWDnAN6FQUkS6x,0iEtIxbK0KxaSlF7G42ZOp';
+    const artistIds = '7rkW85dBwwrJtlHRDkJDAC,3TVXtAsR1Inumwj472S9r4,7dGJo4pcD2V6oG8kP0tJRR,5H4yInM5zmHqpKIoMNAx4r,1Xyo4u8uXC1ZmMpatF05PJ,2hlmm7s2ICUX0LVIhVFlZQ,0eDvMgVFoNV3TpwtrVCoTj,5VadK1havLhK1OpKYsXv9y,5K4W6rqBFWDnAN6FQUkS6x,0iEtIxbK0KxaSlF7G42ZOp';
     const url = `https://spotify23.p.rapidapi.com/artists/?ids=${artistIds}`;
 
     try {
@@ -102,10 +102,10 @@ function App() {
               {artists.length === 0 ? <p>No artists found.</p> : artists.map((artist, index) => (
                 <div key={index} className="artist-info">
                   <h3>{artist.name}</h3>
-                  <p><strong>Oyentes mensuales:</strong> {artist.followers.total}</p>
-                  <p><strong>Generos:</strong> {artist.genres.join(', ')}</p>
-                  <p><strong>Popularidad:</strong> {artist.popularity}</p>
-                  <p><strong>Perfil:</strong> <a href={artist.external_urls.spotify} target="_blank" rel="noopener noreferrer">{artist.uri}</a></p>
+                  <p><i class="bi bi-volume-up"></i>&nbsp;<strong>Oyentes mensuales:</strong>{artist.followers.total}</p>
+                  <p><i class="bi bi-file-music-fill"></i>&nbsp;<strong>Generos:</strong> {artist.genres.join(', ')}</p>
+                  <p><i class="bi bi-star-fill"></i>&nbsp;<strong>Popularidad:</strong> {artist.popularity}</p>
+                  <p><i class="bi bi-person-check"></i>&nbsp;<strong>Perfil:</strong> <a href={artist.external_urls.spotify} target="_blank" rel="noopener noreferrer">{artist.uri}</a></p>
                   <img src={artist.images.length > 0 ? artist.images[0].url : ''} alt={artist.name} style={{ width: '200px' }} />
                 </div>
               ))}
